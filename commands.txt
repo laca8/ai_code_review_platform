@@ -1,0 +1,56 @@
+================================
+***Initialize the Project***
+================================
+
+npm init -y
+
+
+***Install All Packages***
+==================================
+***TypeScript + Dev Tools***
+==================================
+bash `npm i -D typescript ts-node nodemon @types/node`
+`npx tsc --init`
+==================================
+***Express + Types***
+==================================
+bash `npm i express`
+`npm i -D @types/express`
+=================================
+***PostgreSQL + TypeORM***
+=================================
+bash `npm i typeorm pg reflect-metadata`
+`npm i -D @types/pg`
+======================================
+***Auth & Security***
+======================================
+bash `npm i jsonwebtoken bcryptjs`
+`npm i -D @types/jsonwebtoken @types/bcryptjs`
+========================================
+***GitHub OAuth***
+========================================
+bash `npm i passport passport-github2 passport-jwt passport-google-oauth20`
+`npm i -D @types/passport @types/passport-github2 @types/passport-jwt @types/passport-google-oauth20`
+=============================================
+***Queue (Bull + Redis)***
+=============================================
+bash `npm i bull ioredis`
+`npm i -D @types/bull @types/ioredis`
+==============================================
+***AI (Anthropic)***
+==============================================
+bash `npm i @anthropic-ai/sdk`
+================================================
+***Utilities***
+===================================================
+bash `npm i dotenv cors helmet express-rate-limit uuid`
+`npm i -D @types/cors @types/uuid`
+======================================================
+***Validation***
+==========================================================
+bash `npm i class-validator class-transformer`
+========================================================
+***Notifications***
+=======================================================
+bash `npm i nodemailer axios`
+`npm i -D @types/nodemailer`
