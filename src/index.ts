@@ -9,6 +9,8 @@ import { redis } from "./config/redis";
 import { registerMiddlewares } from "./common/middlewares";
 import { errorHandler, notFoundHandler } from "./common/errors/errorHandler";
 
+// ── Routes ──────────────────────────────────────────────────────────────────
+import authRoutes from "./modules/auth/routes/auth.route";
 const app = express();
 
 // ── Database connection ────────────────────────────────────────────────────
@@ -31,7 +33,7 @@ app.get("/health", (_req, res) => {
 });
 
 // ── Routes ──────────────────────────────────────────────────────────────────
-// app.use("/api/v1/auth",         authRoutes);
+app.use("/api/v1/auth", authRoutes);
 // app.use("/api/v1/users",        userRoutes);
 // app.use("/api/v1/repositories", repositoryRoutes);
 // app.use("/api/v1/analysis",     analysisRoutes);

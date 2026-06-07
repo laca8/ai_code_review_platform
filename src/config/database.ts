@@ -2,7 +2,7 @@ import "reflect-metadata";
 import { DataSource } from "typeorm";
 import dotenv from "dotenv";
 
-// import { User }           from "../entities/User";
+import { User } from "../entities/User";
 // import { Repository }     from "../entities/Repository";
 // import { AnalysisJob }    from "../entities/AnalysisJob";
 // import { AnalysisReport } from "../entities/AnalysisReport";
@@ -25,6 +25,7 @@ export const AppDataSource = new DataSource({
     logging: process.env.DB_LOGGING === "true",
 
     //   entities:   [User, Repository, AnalysisJob, AnalysisReport, Issue, IssueComment, Subscription, AuditLog],
+    entities: [User],
     migrations: [__dirname + "/../migrations/*.ts"],
 
     extra: {

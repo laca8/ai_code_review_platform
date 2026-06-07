@@ -7,9 +7,9 @@
     "dev": "nodemon --exec ts-node src/index.ts",
     "build": "tsc",
     "start": "node dist/index.js",
-    "migration:generate": "typeorm migration:generate -d src/config/database.ts",
-    "migration:run": "typeorm migration:run -d src/config/database.ts",
-    "migration:revert": "typeorm migration:revert -d src/config/database.ts"
+    "migration:generate": "npx typeorm-ts-node-commonjs migration:generate src/migrations/Init -d src/config/database.ts",
+    "migration:run": "npx typeorm-ts-node-commonjs migration:run -d src/config/database.ts",
+    "migration:revert": "npx typeorm-ts-node-commonjs migration:revert -d src/config/database.ts"
   },
   "repository": {
     "type": "git",
