@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from "express";
-import { jwtService, AuthUser } from "../jwt/jwt.service";
+import { jwtService, AuthUser } from "../services/jwt.service";
 
 // ── Extend Express Request ────────────────────────────────────────────────────
 declare global {

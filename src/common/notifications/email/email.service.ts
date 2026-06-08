@@ -19,6 +19,9 @@ class EmailService {
                 user: process.env.SMTP_USER,
                 pass: process.env.SMTP_PASSWORD,
             },
+            tls: {
+                rejectUnauthorized: false,
+            },
         });
     }
 
@@ -47,7 +50,7 @@ class EmailService {
     }
 
     async sendEmailVerification(to: string, token: string): Promise<void> {
-        const url = `${process.env.APP_URL}/auth/verify-email?token=${token}`;
+        const url = `${process.env.APP_URL}/api/v1/auth/verify-email/${token}`;
         await this.send({
             to,
             subject: "Verify your email",

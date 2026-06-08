@@ -1,18 +1,23 @@
-import {
-    Router,
-} from 'express'
-import { AuthController } from '../controllers/auth.controller'
-import { RegisterDto } from '../dto/register.dto';
-import { validateDto } from '../../../common/validate/validate.dto';
+import { Router } from 'express'
+import { authController } from '../controllers/auth.controller'
+import { RegisterDto } from '../dto/register.dto'
+import { validateDto } from '../../../common/validate/validate.dto'
+import { asyncHandler } from '../../../common/middlewares'
+import { LoginDto } from '../dto/login.dto'
+
 const router = Router()
 
-// Initialize controller
-const authController = new AuthController({} as any);
-// Define routes
-router.post('/register', validateDto(RegisterDto), authController.register);
-router.get(
-    "/verify-email",
-    authController.verificationEmail
-);
+router.post("/register",
+    validateDto(RegisterDto),
+    asyncHandler((req, res, next) => authController.register(req, res, next))
+)
 
-export default router;
+router.get("/verify-email/:token",
+    asyncHandler((req, res, next) => authController.verifyEmail(req, res, next))
+)
+router.post(
+    "/login",
+    validateDto(LoginDto),
+    asyncHandler((req, res, next) => authController.login(req, res, next))
+);
+export default router

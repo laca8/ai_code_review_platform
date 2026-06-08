@@ -55,7 +55,11 @@ bash `npm i class-validator class-transformer`
 bash `npm i nodemailer axios`
 `npm i -D @types/nodemailer`
 
-
+===========================================================
+***Jobs***
+============================================================
+bash `npm i node-cron`
+npm i -D @types/node-cron
 
 1) Manual Register
 fullName + email + password
