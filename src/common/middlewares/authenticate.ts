@@ -2,13 +2,13 @@ import { Request, Response, NextFunction } from "express";
 import { jwtService, AuthUser } from "../services/jwt.service";
 
 // ── Extend Express Request ────────────────────────────────────────────────────
-declare global {
-    namespace Express {
-        interface Request {
-            user?: AuthUser;
-        }
-    }
-}
+// declare global {
+//     namespace Express {
+//         interface Request {
+//             user?: AuthUser;
+//         }
+//     }
+// }
 
 // ── authenticate — required auth ─────────────────────────────────────────────
 export const authenticate = (

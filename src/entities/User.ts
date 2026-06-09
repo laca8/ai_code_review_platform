@@ -1,6 +1,7 @@
-import { Column, Entity } from 'typeorm'
+import { Column, Entity, OneToMany } from 'typeorm'
 
 import { Base } from './Base'
+import { Repository } from './Repository';
 
 export enum UserRole {
     ADMIN = 'admin',
@@ -60,4 +61,9 @@ export class User extends Base {
     // ── Google OAuth ──────────────────────────────────────────────────────────
     @Column({ name: "google_user_id", type: "varchar", nullable: true })
     googleUserId!: string | null;
+
+
+    // ── Relations ─────────────────────────────────────────────────────────────
+    @OneToMany(() => Repository, (repo) => repo.user)
+    repositories!: Repository[];
 }

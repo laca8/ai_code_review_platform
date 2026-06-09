@@ -28,8 +28,8 @@ const start = async () => {
 
 
     // ── 2. Redis ──────────────────────────────────
-    redis.on("connect", () => console.log("✅ Redis connected"));
-    redis.on("error", (e) => console.error("❌ Redis error:", e));
+    // redis.on("connect", () => console.log("✅ Redis connected"));
+    // redis.on("error", (e) => console.error("❌ Redis error:", e));
 
     // ── 2. Jobs ──────────────────────────────────
     startJobs();
@@ -37,10 +37,12 @@ const start = async () => {
     const authRoutes = (await import("./modules/auth/routes/auth.route")).default;
     const googleRoutes = (await import("./modules/auth/routes/google.auth.route")).default;
     const githubRoutes = (await import("./modules/auth/routes/github.auth.route")).default;
+    const repoistoryRoutes = (await import("./modules/repositories/routes/repository.route")).default;
 
     app.use("/api/v1/auth", authRoutes);
     app.use("/api/v1/auth", googleRoutes);
     app.use("/api/v1/auth", githubRoutes);
+    app.use("/api/v1/repos", repoistoryRoutes);
 
     // ── 4. Error handlers ─────────────────────────
     app.use(notFoundHandler);
