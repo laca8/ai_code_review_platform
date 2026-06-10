@@ -1,7 +1,11 @@
-import { Column, Entity, OneToMany } from 'typeorm'
+import { Column, Entity, OneToMany, OneToOne } from 'typeorm'
 
 import { Base } from './Base'
 import { Repository } from './Repository';
+import { AnalysisJob } from './AnalysisJob';
+import { IssueComment } from './IssueComment';
+import { AuditLog } from './AuditLog';
+import { Subscription } from './Subscription';
 
 export enum UserRole {
     ADMIN = 'admin',
@@ -66,4 +70,17 @@ export class User extends Base {
     // ── Relations ─────────────────────────────────────────────────────────────
     @OneToMany(() => Repository, (repo) => repo.user)
     repositories!: Repository[];
+
+    @OneToMany(() => AnalysisJob, (job) => job.user)
+    analysisJobs!: AnalysisJob[];
+
+    @OneToMany(() => IssueComment, (comment) => comment.user)
+    issueComments!: IssueComment[];
+
+
+    @OneToOne(() => Subscription, (sub) => sub.user)
+    subscription!: Subscription;
+
+    @OneToMany(() => AuditLog, (log) => log.user)
+    auditLogs!: AuditLog[];
 }

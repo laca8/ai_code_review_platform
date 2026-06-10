@@ -93,6 +93,7 @@ export class RepositoriesController {
             const signature = req.headers["x-hub-signature-256"] as string;
             const repoFullName = req.body?.repository?.full_name;
 
+
             if (!signature || !repoFullName) {
                 res.status(400).json({ message: "Invalid webhook payload" });
                 return;

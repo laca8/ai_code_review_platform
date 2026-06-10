@@ -1,6 +1,7 @@
 import { Entity, Column, ManyToOne, OneToMany, JoinColumn, Index } from "typeorm";
 import { Base } from "./Base";
 import { User } from "./User";
+import { AnalysisJob } from "./AnalysisJob";
 
 
 export enum SourceType {
@@ -54,6 +55,11 @@ export class Repository extends Base {
     @ManyToOne(() => User, (user) => user.repositories, { onDelete: "CASCADE" })
     @JoinColumn({ name: "user_id" })
     user!: User;
+
+
+    // ── Relations ─────────────────────────────────────────────────────────────
+    @OneToMany(() => AnalysisJob, (job) => job.repository)
+    analysisJobs!: AnalysisJob[];
 
 
 }

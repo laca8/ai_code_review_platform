@@ -4,12 +4,12 @@ import dotenv from "dotenv";
 
 import { User } from "../entities/User";
 import { Repository } from "../entities/Repository";
-// import { AnalysisJob }    from "../entities/AnalysisJob";
-// import { AnalysisReport } from "../entities/AnalysisReport";
-// import { Issue }          from "../entities/Issue";
-// import { IssueComment }   from "../entities/IssueComment";
-// import { Subscription }   from "../entities/Subscription";
-// import { AuditLog }       from "../entities/AuditLog";
+import { AnalysisJob } from "../entities/AnalysisJob";
+import { AnalysisReport } from "../entities/AnalysisReport";
+import { Issue } from "../entities/Issue";
+import { IssueComment } from "../entities/IssueComment";
+import { Subscription } from "../entities/Subscription";
+import { AuditLog } from "../entities/AuditLog";
 
 dotenv.config();
 
@@ -24,8 +24,8 @@ export const AppDataSource = new DataSource({
     synchronize: process.env.DB_SYNC === "true", // true in dev only — never in prod
     logging: process.env.DB_LOGGING === "true",
 
-    //   entities:   [User, Repository, AnalysisJob, AnalysisReport, Issue, IssueComment, Subscription, AuditLog],
-    entities: [User, Repository],
+    entities: [User, Repository, AnalysisJob, AnalysisReport, Issue, IssueComment, Subscription, AuditLog],
+    // entities: [User, Repository],
     migrations: [__dirname + "/../migrations/*.ts"],
 
     extra: {
